@@ -2,22 +2,24 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 import { IProduct, products } from '../../mocks/Products';
 
-interface IInitialState {
+interface IWendingMachine {
     products: IProduct[];
     selectedProduct: IProduct | null;
     userProducts: IProduct[];
     rejectReason: string;
     userBalance: number;
+    machineBalance: number;
     machineChange: number;
 }
 
-const initialState: IInitialState = {
+const initialState: IWendingMachine = {
     products,
     selectedProduct: null,
     userProducts: [],
-    userBalance: 0,
+    userBalance: 6878,
+    machineBalance: 0,
     rejectReason: '',
-    machineChange: 100
+    machineChange: 10000
 };
 const wendingSlice = createSlice({
     name: 'Wending',
@@ -26,6 +28,20 @@ const wendingSlice = createSlice({
         resetRejectReason(state) {
             state.rejectReason = '';
         },
+        setMachineBalance(state, action: PayloadAction<number>) {
+            state.machineBalance = action.payload;
+        },
+        setUserBalance(state, action: PayloadAction<number>) {
+            state.userBalance = action.payload;
+        },
+
+        incrementBalance(state, action: PayloadAction<number>) {
+            if (state.userBalance >= action.payload) {
+                state.userBalance -= action.payload;
+                state.machineBalance += action.payload;
+            }
+            return state;
+        },
         getOne(state, action: PayloadAction<string>) {
             const wendingIndex = state.products.findIndex((p) => p.id === action.payload);
             const wendingProduct = state.products[wendingIndex];
@@ -33,8 +49,8 @@ const wendingSlice = createSlice({
             const userProduct = state.userProducts[userIndex];
             if (wendingProduct) {
                 if (wendingProduct.amount > 0) {
-                    if (state.userBalance >= wendingProduct.price) {
-                        state.userBalance -= wendingProduct.price;
+                    if (state.machineBalance >= wendingProduct.price) {
+                        state.machineBalance -= wendingProduct.price;
                         state.products[wendingIndex].amount -= 1;
                         state.selectedProduct = wendingProduct;
                         if (userProduct) {
@@ -54,9 +70,7 @@ const wendingSlice = createSlice({
             }
             return state;
         },
-        pullCash(state, action: PayloadAction<number>) {
-            return { ...state, userBalance: state.userBalance + action.payload };
-        },
+
         resetMachine() {
             return initialState;
         }

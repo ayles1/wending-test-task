@@ -1,9 +1,11 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
+import cashReducer from './cashSlice/cash.slice';
 import wendingReducer from './wendingSlice/wending.slice';
 
 const rootReducer = combineReducers({
-    wending: wendingReducer
+    wending: wendingReducer,
+    cash: cashReducer
 });
 
 const store = configureStore({

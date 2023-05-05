@@ -12,6 +12,7 @@ const ProductInput: FC<any> = () => {
     const [productId, setProductId] = useState<string>('');
     const iter = Array.from({ length: 10 }, (_, i) => i);
     const handleChange = (value: string) => {
+        resetRejectReason();
         setProductId((prev) => prev + value);
     };
     const handleReset = () => {
@@ -20,6 +21,7 @@ const ProductInput: FC<any> = () => {
     };
     const handleSubmit = () => {
         getOne(productId);
+        setProductId('');
     };
     return (
         <div className={styles.container}>
