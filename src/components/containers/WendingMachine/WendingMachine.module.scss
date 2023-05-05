@@ -1,0 +1,34 @@
+@import "/src/styles/mixins";
+
+.wrapper {
+  position: absolute;
+  inset: 0;
+  @include flex-center;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    height: 500px;
+    width: 400px;
+
+    .productsBar {
+      flex: 1 1;
+      padding: 30px 15px 15px 15px;
+      color: white;
+      background-color: black;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+    }
+
+    .cashBar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+      background-color: gray;
+    }
+  }
+}

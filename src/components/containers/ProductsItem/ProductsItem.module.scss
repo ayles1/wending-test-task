@@ -1,0 +1,24 @@
+.product {
+
+
+  .price {
+
+  }
+
+  .name {
+
+  }
+
+  .imageContainer {
+    margin-bottom: 20px;
+    display: flex;
+
+    position: relative;
+
+    .image {
+      aspect-ratio: 1/1;
+      width: 20px;
+      position: absolute;
+    }
+  }
+}

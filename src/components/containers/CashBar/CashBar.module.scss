@@ -1,0 +1,14 @@
+@import "src/styles/mixins";
+.cashIn{
+  text-align: center;
+  .cashContainer{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 5px;
+    button {
+      background-color: transparent;
+    }
+  }
+}
+
+

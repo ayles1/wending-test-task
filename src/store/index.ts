@@ -1,6 +1,10 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
-const rootReducer = combineReducers({});
+import wendingReducer from './wendingSlice/wending.slice';
+
+const rootReducer = combineReducers({
+    wending: wendingReducer
+});
 
 const store = configureStore({
     reducer: rootReducer

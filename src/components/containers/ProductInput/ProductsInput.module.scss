@@ -1,0 +1,16 @@
+@import "src/styles/mixins";
+.container {
+  @include flex-center(column);
+
+  .productId {
+    display: grid;
+    gap:5px;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+  }
+
+  button {
+    display:block;
+    background-color: transparent;
+  }
+}
