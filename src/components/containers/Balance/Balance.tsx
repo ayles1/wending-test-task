@@ -7,6 +7,7 @@ import { useAppDispatch, useTypedSelector } from '@/hooks/redux';
 import styles from './Balance.module.scss';
 
 const Balance: FC<any> = () => {
+    console.log('hello world')
     const { machineBalance } = useTypedSelector((state) => state.wending);
     const { changeLeft, user } = useTypedSelector((state) => state.cash);
     const { setMachineBalance, setUserBalance } = useAppDispatch(wendingActions);
